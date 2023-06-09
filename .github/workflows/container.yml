@@ -16,4 +16,8 @@ jobs:
           ref: ${{ env.GITHUB_REF_NAME }}
       - name: "buildDockerfile"
         run: |
-          docker build .
+          docker build -t ubuntucloudcamp:1.0.0 .
+      - name: "deployment"
+        run: |
+          docker image tag ubuntucloudcamp:1.0.0 ghcr.io/wcabrera/ubuntucloudcamp:latest
+          docker push ghcr.io/wcabrera/ubuntucloudcamp:latest
